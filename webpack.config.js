@@ -15,16 +15,6 @@ module.exports = [{
     globalObject: 'this',
     libraryTarget: 'umd'
   },
-  plugins: [
-    new CopyPlugin({
-      patterns: [
-        {
-          from: 'src/worker/Decoder.wasm',
-          to: 'worker'
-        }
-      ]
-    })
-  ],
   resolve: {
     extensions: [".ts", ".tsx", ".js"]
   },

@@ -145,7 +145,8 @@ export class ChannelConnection extends EventEmitter {
         if (typeof ev.data === 'string') {
           const e = JSON.parse(ev.data);
           if (e && e.version && e.cipherSuite) {
-            return;
+            this.websocket.send(this.nvr.getPlayCommand(1))
+            return
           }
           if (e && e.sdp) {
             const media = ChannelConnection.getMediaFromSdp(e.sdp);

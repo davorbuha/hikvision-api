@@ -61,7 +61,7 @@ export class Nvr extends Base {
     return JSON.stringify({
       sequence: 0,
       cmd: 'realplay',
-      live: `live://${this.ip}:${this.wsPort}/${32 + channelId}/1`
+      url: `live://${this.ip}:${this.wsPort}/${channelId}/1`
     });
   }
 
