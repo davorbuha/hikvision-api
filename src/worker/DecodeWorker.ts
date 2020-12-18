@@ -1,6 +1,6 @@
-export function getDecodeWorker(isBrowser: boolean, wasmUrl: string) {
-  const postMessage = isBrowser ? 'postMessage' : 'parentPort.postMessage';
-  return `${isBrowser ? '' : 'const { parentPort } = require(\'worker_threads\');'} 
+export function getDecodeWorker(_: boolean, wasmUrl: string) {
+  const postMessage = true ? 'postMessage' : 'parentPort.postMessage';
+  return `${true ? '' : 'const { parentPort } = require(\'worker_threads\');'} 
 (function(event) {
   const AUDIO_TYPE = 0;\t// 音频
   const VIDEO_TYPE = 1; // 视频
@@ -21,7 +21,7 @@ export function getDecodeWorker(isBrowser: boolean, wasmUrl: string) {
       moduleOverrides[key] = Module[key];
     }
   }
-  const ENVIRONMENT_IS_WEB = typeof window === 'object';
+  const ENVIRONMENT_IS_WEB = true;
   const ENVIRONMENT_IS_WORKER = typeof importScripts === 'function';
   const ENVIRONMENT_IS_NODE = typeof process === 'object' && typeof require === 'function' && !ENVIRONMENT_IS_WEB && !ENVIRONMENT_IS_WORKER;
   if (ENVIRONMENT_IS_NODE) {
@@ -3275,7 +3275,7 @@ export function getDecodeWorker(isBrowser: boolean, wasmUrl: string) {
 
   var funGetFrameData = null;
 
-  ${isBrowser ? 'onmessage' : 'parentPort.onmessage'} = function(event) {
+  ${true ? 'onmessage' : 'parentPort.onmessage'} = function(event) {
     var eventData = event.data;
     var res = 0;
     switch (eventData.command) {
